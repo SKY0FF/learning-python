@@ -1,74 +1,105 @@
-import random
-
 #task 1
-lst_1 = []
+lst = []
 for i in range(10):
-    lst_1.append(random.randint(0, 100))
+    number = int(input())
+    lst.append(number)
 
-print(lst_1)
-
-max_1 = lst_1.index(max(lst_1))
-min_1 = lst_1.index(min(lst_1))
+max_1 = lst.index(max(lst))
+min_1 = lst.index(min(lst))
 
 v = 0
 
 if max_1 > min_1:
     while max_1 >= min_1:
-        v += lst_1[min_1]
+        v += lst[min_1]
         min_1 +=1
 elif max_1 < min_1:
     while max_1 <= min_1:
-        v += lst_1[max_1]
+        v += lst[max_1]
         max_1 += 1
-print(v)
+print(v, "\n")
 
 
 #task 2
-
-lst_2 = []
+lst = []
 for i in range(10):
-    lst_2.append(random.randint(0, 100))
+    number = int(input())
+    lst.append(number)
 
-print("\n", lst_2)
+lst.remove(max(lst))
 
-lst_2.remove(max(lst_2))
-
-print(lst_2)
+print(lst, "\n")
 
 
 #task 3
-
-lst_3 = []
+lst = []
 for i in range(10):
-    lst_3.append(random.randint(0, 100))
+    number = int(input())
+    lst.append(number)
 
-print("\n", lst_3)
+lst.reverse()
 
-lst_3.reverse()
+print(lst, "\n")
 
-print(lst_3)
-
-lst_4 = []
+lst = []
 for i in range(10):
-    lst_4.append(random.randint(0, 100))
+    number = input()
+    lst.append(number)
 
-print("\n", lst_4)
-
-for index, value in enumerate(lst_4):
-    print(index, value, end="\n")
-    
 x = 9
 
 for i in range(10):
-    lst_4.append(lst_4[x])
+    lst.append(lst[x])
     x -= 1
 
 for i in range(10):
-    lst_4.remove(lst_4[i-1])
-    
-#for i in range(10):
-#    
-#    lst_4.append(lst_4[i])
-#    lst_4.remove(lst_4[i])
+    lst.remove(lst[i-1])
 
-print(lst_4)
+print(lst, "\n")
+
+
+#task 4
+lst = []
+for i in range(10):
+    number = int(input())
+    lst.append(number)
+
+def is_multiple_three(item):
+    if (item % 3) == 0:
+        return True
+    else:
+        return False
+
+print(list(filter(is_multiple_three, lst)), "\n")
+
+
+#task 5
+lst = []
+for i in range(10):
+    number = int(input())
+    lst.append(number)
+
+def minus(item):
+    return item-1
+
+print(list(map(minus, lst)), "\n")
+
+#task 6
+lst = []
+for i in range(10):
+    number = input()
+    lst.append(number)
+
+def split2(item): #делает список с первым словом того списка
+    lst2 = item.split()
+    lst2.remove(lst2[1])
+    return lst2
+
+lst_2 = list(map(split2, lst)) #создание списка с первым слово списка lst
+
+symb = "у" #символ который нужно найти 
+x = 0 #для работы
+for i in range(10):
+    if symb in lst_2[x][0]: #если symb есть в списке списка то вывод да
+        print(x, '-', lst[x])
+    x += 1
