@@ -1,23 +1,24 @@
 class Auto:
 
-    def __init__(self, mofified):
-        self.MaxSpeed = 325
-        self.Name = "Lamborghini Huracan"
-        self.BodyType = "Coupe"
-        self.AmountOfDoors = 2
-        self.SizeTruck = 100
-        self.modified = mofified
+    def __init__(self, Name, MaxSpeed, BodyType, AmountOfDoors, SizeTruck, modified, year):
+        self.MaxSpeed = MaxSpeed
+        self.Name = Name
+        self.BodyType = BodyType
+        self.AmountOfDoors = AmountOfDoors
+        self.SizeTruck = SizeTruck
+        self.modified = modified
+        self.year = year
     
-    def get_year_of_issue(self):
-        return "Год выпуска - 2014"
+    def get_year(self):
+        return "Год поставки - " + str(self.year)
     
-    def get_acceleration_to_one_hundred(self):
-        return 3.2
-    
-    def get_cylinder_arrangement(self):
-        return "V-образный"
+    def get_mod(self):
+        if self.modified == "Yes":
+            return "Машина модифицированна"
+        elif self.modified == "No":
+            return "Машина не модифицированна"
 
-car = Auto("True")
-print(car.modified)
-print(car.get_acceleration_to_one_hundred())
-print(car.get_year_of_issue())
+car = Auto("Lamborghini Huracan", 325, "Coupe", 2, 100, "Yes", 2023)
+print(car.MaxSpeed)
+print(car.get_mod())
+print(car.get_year())
