@@ -40,37 +40,55 @@ class List():
 
     def remove(self, value):
         item = self.first_time
+        if item.value == value:
+            self.first_time = item.next_item
         while item.value != value:
-            item = item.next_item
-        while item.next_item:
-            item2 = item.next_item
-            item.value = item2.value
-            item = item2.next_item
-        #for i in range(self.count):
-
-
-      #хз, но вообще просто проверять в цикле пока self.value != value ну тоесть значение из метода ремув и значение в подклассе айтем не совпадут, а потом просто удалить, и переменные которые после идут ссылки там нужно будет поменять да
+            if item.next_item.value == value:
+                break
+            else:
+                item = item.next_item
+        item2 = item.next_item
+        item.next_item = item2.next_item
+        self.count -= 1
 
     def index(self, value):
-        #должен возвращать индекс элемента со значение value
-        pass
-
-    def __str__(self) -> str:
-        x = ""
         item = self.first_time
-        for i in range(self.count):
-            x += f"{item.value} ,"
+        if item.value == value:
+            return 0
+        x = 0
+        while item.value != value:
             item = item.next_item
-        return f"[{x}] , count={self.count}"#нужно дододелать
+            x += 1
+        return x
+
+    def __str__(self, var=None) -> str:
+        if var != None:
+            return var
+        else:
+            x = ""
+            item = self.first_time
+            for i in range(self.count):
+                if item.next_item:
+                    x += f"{item.value}, "
+                    item = item.next_item
+                else:
+                    x += f"{item.value}"
+            return f"[{x}]"
     
 lst = List()
 lst.append(9)
-lst.append("lox")
 lst.append(True)
 
 print(lst, "\n")
 
-lst.insert("sam lox", 5)
-lst.remove("lox")
+lst.insert("IT-cube", 5)
+lst.append(2023)
+lst.remove(9)
 
-print(lst)
+print(lst, "\n")
+
+lst.insert("IT-circle", 1)
+
+print(lst, "\n")
+
+print(lst.index(2023))
