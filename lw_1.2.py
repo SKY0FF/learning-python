@@ -1,36 +1,35 @@
-def sort(list, start, end):
-    if end - start > 1:
-        mid = (start + end)//2
-        sort(list, start, mid)
-        sort(list, mid, end)
-        lst_sort(list, start, mid, end)
- 
-def lst_sort(list, start, mid, end):
-    left = list[start:mid]
-    right = list[mid:end]
-    k = start
-    i = 0
-    j = 0
-    while (start + i < mid and mid + j < end):
-        if (left[i] <= right[j]):
-            list[k] = left[i]
-            i = i + 1
-        else:
-            list[k] = right[j]
-            j = j + 1
-        k = k + 1
-    if start + i < mid:
-        while k < end:
-            list[k] = left[i]
-            i = i + 1
-            k = k + 1
-    else:
-        while k < end:
-            list[k] = right[j]
-            j = j + 1
-            k = k + 1
- 
-lst = [1, 2, 7, 123, 93213, 478, 5, -123, 0]
+def sort(lst):
+    if len(lst)>1:
+        mid = len(lst)//2
+        lefthalf = lst[:mid]
+        righthalf = lst[mid:]
+
+        sort(lefthalf)
+        sort(righthalf)
+
+        i = 0
+        j = 0
+        k = 0
+        while i<len(lefthalf) and j<len(righthalf):
+            if lefthalf[i]<righthalf[j]:
+                lst[k]=lefthalf[i]
+                i=i+1
+            else:
+                lst[k]=righthalf[j]
+                j += 1
+            k += 1
+
+        while i<len(lefthalf):
+            lst[k]=lefthalf[i]
+            i += 1
+            k += 1
+
+        while j<len(righthalf):
+            lst[k]=righthalf[j]
+            j += 1
+            k += 1
+
+lst = [54,26,93,17,77,31,44,55,20]
 print(f"Список до сортировки: {lst}")
-sort(lst, 0, len(lst))
-print(f"Отсортированный список: {lst}")
+sort(lst)
+print(f"Список после сортировки: {lst}")
