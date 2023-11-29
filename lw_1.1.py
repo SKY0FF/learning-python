@@ -82,7 +82,6 @@ class List():
                     x += f"{item.value}"
             return f"[{x}]"
 
-print("Задание №1")
 lst = List()
 lst.append(9)
 lst.append(True)
