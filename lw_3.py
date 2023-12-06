@@ -11,3 +11,5 @@ class MyGraf():
     def __str__(self):
         #вывод матрицы смежности
         pass
+
+graf = MyGraf(["A", "B", "C"], ["AC", "AD", "AB", "CB"], [5, 6, 6, 9])
