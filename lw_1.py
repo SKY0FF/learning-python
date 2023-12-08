@@ -20,59 +20,55 @@ class List():
         self.count += 1
     
     def insert(self, value, index):
-        if self.count == 0:
+        if self.count == 0 or self.count <= index:
             self.append(value)
         else:
             item = self.first_item
             x = 0
-            if x == index:
+            if 0 == index:
                 self.first_item = self.Item(value, item)
-                self.count += 1
-            elif self.count <= index:
-                self.append(value)
             else:
                 while x+1 != index:    
                     x += 1
                     item = item.next_item
                 item.next_item = self.Item(value, item.next_item)
-                self.count += 1
+            self.count += 1
 
-    def remove(self, value):#если элемент нужно удалить которого нет, то он упадет!!!
-        item = self.first_item
-        if item.value == value:
-            self.first_item = item.next_item
-        while item.value != value:
-            if item.next_item.value == value:
-                break
-            else:
+    def remove(self, value):
+        try:
+            item = self.first_item
+            if item.value == value:
+                self.first_item = item.next_item
+            while item.value != value and item.next_item.value != value:
                 item = item.next_item
-        item2 = item.next_item
-        item.next_item = item2.next_item
-        self.count -= 1
+            item.next_item = item.next_item.next_item
+            self.count -= 1
+        except:
+            pass
 
     def index(self, value):
-        item = self.first_item
-        if item.value == value:
-            return 0
-        x = 0
-        while item.value != value:
-            item = item.next_item
-            x += 1
-        return x
-
-    def __str__(self, var=None) -> str:
-        if var != None:
-            return var
-        else:
-            x = ""
+        try:
             item = self.first_item
-            for i in range(self.count):
-                if item.next_item:
-                    x += f"{item.value}, "
-                    item = item.next_item
-                else:
-                    x += f"{item.value}"
-            return f"[{x}]"
+            x = 0
+            if item.value == value:
+                return x
+            while item.value != value:
+                item = item.next_item
+                x += 1
+            return x
+        except:
+            pass
+
+    def __str__(self) -> str:
+        x = "" 
+        item = self.first_item
+        for i in range(self.count):
+            if item.next_item:
+                x += f"{item.value}, "
+                item = item.next_item
+            else:
+                x += f"{item.value}"
+        return f"[{x}]"
 
 lst = List()
 lst.append(9)
