@@ -1,9 +1,9 @@
 import math
 
 #task1
-a = int(input("Введите коэффицент a: "))
-b = int(input("Введите коэффицент b: "))
-c = int(input("Введите коэффицент c: "))
+a = float(input("Введите коэффицент a: "))
+b = float(input("Введите коэффицент b: "))
+c = float(input("Введите коэффицент c: "))
 
 def get_solution(a, b, c):
     d = b*b - 4*a*c
@@ -35,7 +35,7 @@ def get_part_of_tuple(tpl, item):
 print(get_part_of_tuple(tpl, item), "\n")
 
 #task3
-item = set(input("Введите число, которое нужно проверить, между цифрами в числе поставьте пробел: ").split())
+item = set(input("Введите число, которое нужно проверить: "))
 def is_true_number(item):
     st = set({"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B"})
     if st.issuperset(item):
