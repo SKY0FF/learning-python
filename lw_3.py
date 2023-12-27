@@ -31,7 +31,7 @@ class MyGraf():
             for j in range(len(self.adjacency_matrix)):
                 x += f"{self.adjacency_matrix[i][j]}"
             x += '\n'
-        return f"{x}{self.lst_edge_1}\n{self.lst_edge_2}\n{self.lst_all}"
+        return f"{x}{self.lst_edge_1}\n{self.lst_edge_2}"
         #вывод матрицы смежности
 
 graf = MyGraf(["A", "B", "C", "D"], ["AC", "AD", "AB", "CB"], [5, 6, 6, 9])
