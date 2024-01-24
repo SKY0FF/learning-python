@@ -1,8 +1,15 @@
-import hashlib
-
-data = '123'
-print(hash(data))
-#class Dict(): 
+import hashlib, re
+while True:  
+    data = '1212312334'
+    print(hash(data))
+    #m = hashlib.sha256()
+    #m.update(data.encode())
+    #m.digest()
+    #print(re.sub(r'[a-z]', '', m.hexdigest()))
+#size = 25
+#datap = [[],]*size
+#print(datap)
+#class Dict():
 #     
 #    def __init__(self): 
 #        self.__size = 25 
