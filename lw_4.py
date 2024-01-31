@@ -1,7 +1,7 @@
 class MyDict:
      
     def __init__(self): 
-        self.__size = 25 
+        self.__size = 25
         self.__data = [[],] * self.__size
 
     def __str__(self):
@@ -19,9 +19,12 @@ class MyDict:
     def get(self, key):
         try:
             m = self.__get_hash(key)
-            for i in range(len(self.__data[m])):
-                if self.__data[m][i][0] == key:
-                    return self.__data[m][i][1]
+            if len(self.__data[m]) == 1:
+                return self.__data[m][0][1]
+            else:
+                for i in range(len(self.__data[m])):
+                    if self.__data[m][i][0] == key:
+                        return self.__data[m][i][1]
         except:
             return None
 
@@ -32,5 +35,6 @@ my_dict.add('971', 'number')
 my_dict.add('ton', 'ton')
 my_dict.add('1', 123)
 my_dict.add('bool', True)
+print(my_dict)
 print(my_dict.get('971'))
 print(my_dict.get('ton'))
