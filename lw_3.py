@@ -56,6 +56,6 @@ class MyGraf():
             x += '\n'
         return x
 
-graf = MyGraf(["A", "B", "C", "D", "E", "F"], ["AC", "AD", "AB", "BC", "CE", "CF", "DF", "EF"], [1, 3, 3, 4, 7, 5, 2, 4])
+graf = MyGraf(["A", "B", "C", "D", "E", "F"], ["AC", "AD", "AB", "BC", "CE", "CF", "DF", "EF"], [1, 3, 3, 4, 7, 5, 2, 4])#ввод с клавиатуры
 print(graf)
 print(graf.deykster("A"))
