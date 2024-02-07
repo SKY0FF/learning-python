@@ -1,7 +1,7 @@
 class MyDict:
      
     def __init__(self): 
-        self.__size = 25
+        self.__size = 100
         self.__data = [[],] * self.__size
 
     def __str__(self):
@@ -10,10 +10,10 @@ class MyDict:
     def __get_hash(self, key):
         return sum([ord(j) * ((i + (i-1)) | 3) for i, j in enumerate(key)]) if sum([ord(j) * ((i + (i-1)) | 3) for i, j in enumerate(key)]) > 0 else sum([ord(j) * ((i + (i-1)) | 3) for i, j in enumerate(key)]) * -1
 
-    def add(self, key, value):
-        m = self.__get_hash(key)
+    def add(self, key, value):#почему то добавляется 100 элементов
+        m = self.__get_hash(key) 
         while m >= len(self.__data):
-            self.__data.append([])
+            self.__data.extend([[], ] * self.__size)
         self.__data[m].append([key, value])
 
     def get(self, key):
