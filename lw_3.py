@@ -3,13 +3,15 @@ import math
 class MyGraf():
     def __init__(self, lst_vertex, lst_edge, lst_values):
         self.lst_vertex = lst_vertex
+        self.lst_edge = lst_edge
+        self.lst_values = lst_values
         self.adjacency_matrix = []
         for i in range(len(self.lst_vertex)):
             self.adjacency_matrix.append([math.inf]*len(self.lst_vertex))
 
         for i in range(len(lst_values)):
-            self.adjacency_matrix[self.lst_vertex.index((lst_edge[i])[0])][self.lst_vertex.index((lst_edge[i])[1])] = lst_values[i]
-            self.adjacency_matrix[self.lst_vertex.index((lst_edge[i])[1])][self.lst_vertex.index((lst_edge[i])[0])] = lst_values[i]
+            self.adjacency_matrix[self.lst_vertex.index((self.lst_edge[i])[0])][self.lst_vertex.index((self.lst_edge[i])[1])] = self.lst_values[i]
+            self.adjacency_matrix[self.lst_vertex.index((self.lst_edge[i])[1])][self.lst_vertex.index((self.lst_edge[i])[0])] = self.lst_values[i]
 
     def __get_link_v(self, v):
         for i, weight in enumerate(self.adjacency_matrix[v]):
@@ -56,6 +58,9 @@ class MyGraf():
             x += '\n'
         return x
 
-graf = MyGraf(["A", "B", "C", "D", "E", "F"], ["AC", "AD", "AB", "BC", "CE", "CF", "DF", "EF"], [1, 3, 3, 4, 7, 5, 2, 4])#ввод с клавиатуры
+lst_vertex = input("Введите, через пробел, вершины с которыми нужно создать граф: ").split()
+lst_edge = input("Введите, через пробел, ребра графа(соединения вершин): ").split()
+lst_values = list(map(int, input("Введите, через пробел, веса ребер в таком же порядке, как и ребра: ").split()))
+graf = MyGraf(lst_vertex, lst_edge, lst_values)
 print(graf)
 print(graf.deykster("A"))
